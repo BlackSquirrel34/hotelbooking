@@ -4,6 +4,8 @@ const express = require("express")
 const app = express();
 const connectDB = require("./config/db");
 const roomRoutes = require("./routes/roomRoutes");
+const bookingRoutes = require("./routes/bookingRoutes");
+const { errorHandler } = require("./middleware/errorHandler");
 
 const port = process.env.PORT || 5000;
 
@@ -12,9 +14,11 @@ connectDB();
 
 // setup middleware
 app.use(express.json());
+app.use(errorHandler)
 
 // setup routes
 app.use("/api/rooms", roomRoutes)
+app.use("/api/bookings", bookingRoutes)
 
 
 app.listen(port, () => console.log(`listening on port ${port}`));

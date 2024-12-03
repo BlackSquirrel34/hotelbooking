@@ -15,10 +15,10 @@ const roomSchema = new mongoose.Schema({
     },
     roomNumbers: {
         type: [{
-            number: number, 
-            unavailableDates: [Dates]
+            number: Number, 
+            unavailableDates: [ Date ]
         }]
     }
 })
 
-mongoose.model.exports = mongoose.model("Room", roomSchema);
+module.exports = mongoose.model("Room", roomSchema);
